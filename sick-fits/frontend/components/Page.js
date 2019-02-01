@@ -9,8 +9,11 @@ const theme = {
   grey: '#3a3a3a',
   lightGrey: '#e1e1e1',
   offWhite: '#ededed',
+
+  bs: '0 12px 24px 0 rgba(0,0,0,0,0.09)',
+
   maxWidth: '1000px',
-  bs: '0 12px 24px 0 rgba(0,0,0,0,0.09',
+  breakpointWidth: '1300px',
 };
 
 const StyledPage = styled.div`

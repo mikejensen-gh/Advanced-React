@@ -7,7 +7,7 @@ const theme = {
   red: '#f00',
   black: '#393939',
   grey: '#3a3a3a',
-  lightGrey: '#e1e1e1',
+  lightgrey: '#e1e1e1',
   offWhite: '#ededed',
 
   bs: '0 12px 24px 0 rgba(0,0,0,0,0.09)',
@@ -15,6 +15,8 @@ const theme = {
   maxWidth: '1000px',
   breakpointWidth: '1300px',
 };
+
+theme.lightGrey = theme.lightgrey;
 
 const StyledPage = styled.div`
   background: white;

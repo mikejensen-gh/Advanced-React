@@ -1,3 +1,7 @@
+# to improve
+align skew of logo and navbar links. don't skew text, just background
+
+
 # vscode
 vscode includes emmet by default. enable "emmet.includeLanguages": {"javascript": "javascriptreact"} in user preferences
 
@@ -11,3 +15,6 @@ vscode includes emmet by default. enable "emmet.includeLanguages": {"javascript"
 
 ## injectGlobal
 - used to apply styles to all child components from current component
+
+# nprogress
+- styled using nprogress.css in meta link

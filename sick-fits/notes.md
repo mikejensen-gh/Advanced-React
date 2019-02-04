@@ -8,3 +8,6 @@ vscode includes emmet by default. enable "emmet.includeLanguages": {"javascript"
 - start by writing your styled components within the main component file. if you need it for something else, refactor out into its own component
 - use a 'styles' folder in components
 - use subfolders in components folder e.g. components/Header/{index.js|styles.js|__test__.js}
+
+## injectGlobal
+- used to apply styles to all child components from current component

@@ -19,6 +19,10 @@ vscode includes emmet by default. enable "emmet.includeLanguages": {"javascript"
 # nprogress
 - styled using nprogress.css in meta link
 
+# graphqlyoga + prisma
+- return requirement "!" - value cannot be null
+- when you modify datamodel.* you need to redeploy. modifying schema.graphql does not require redeployment
+
 
 ## frontend
 https://nextjs.org/docs#custom-app
@@ -46,3 +50,11 @@ https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-ta
 https://yeoman.io/
 https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/
 https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658
+https://codeburst.io/next-js-ssr-vs-create-react-app-csr-7452f71599f6
+
+react
+create-react-app OR next.js
+relay OR apollo
+graphqlyoga
+prisma
+SERVER

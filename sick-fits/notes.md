@@ -41,3 +41,8 @@ https://code.visualstudio.com/docs/editor/userdefinedsnippetshttps://code.visual
 https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
 https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag
+
+## other
+https://yeoman.io/
+https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/
+https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658

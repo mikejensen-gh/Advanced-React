@@ -1,9 +1,9 @@
 import CreateItem from '../components/CreateItem';
 
-const Home = () => (
+const Sell = () => (
   <div>
     <CreateItem />
   </div>
 );
 
-export default Home;
+export default Sell;

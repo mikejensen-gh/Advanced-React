@@ -1,7 +1,9 @@
+import CreateItem from '../components/CreateItem';
+
 const Home = () => (
   <div>
-    <p>Sell!</p>
+    <CreateItem />
   </div>
-)
+);
 
 export default Home;

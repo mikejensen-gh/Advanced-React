@@ -33,11 +33,15 @@ https://www.styled-components.com/docs/advanced/#nextjs
 http://ricostacruz.com/nprogress/
 
 # backend
-# graphqlyoga + prisma
+## adding a backend function
+- first add to schema.graphql
+- then add to mutation/query
+
+## graphqlyoga + prisma
 - return requirement "!" - value cannot be null
 - when you modify datamodel.* you need to redeploy. modifying schema.graphql does not require redeployment
 
-# links
+## links
 https://graphql.org/learn/schema/#object-types-and-fields
 
 ## tools

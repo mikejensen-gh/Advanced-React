@@ -6,6 +6,9 @@ type Mutation {
 
   # TODO: how to update images for items
   updateItem(id: ID!, title: String, description: String, price: Int): Item!
+
+  # TODO: return new custom type of e.g. 'SuccessMessage'
+  deleteItem(id: ID!): Item
 }
 
 type Query {

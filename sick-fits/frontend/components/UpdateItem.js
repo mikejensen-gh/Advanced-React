@@ -18,22 +18,24 @@ const SINGLE_ITEM_QUERY = gql`
   }
 `;
 
+// TODO: allow update image
 const UPDATE_ITEM_MUTATION = gql`
   mutation UPDATE_ITEM_MUTATION(
-    $title: String!
-    $description: String!
-    $price: Int!
-    $image: String
-    $largeImage: String
+    $id: ID!
+    $title: String
+    $description: String
+    $price: Int
   ) {
-    createItem(
+    updateItem(
+      id: $id
       title: $title
       description: $description
       price: $price
-      image: $image
-      largeImage: $largeImage
     ) {
       id
+      title
+      description
+      price
     }
   }
 `;
@@ -48,37 +50,32 @@ class UpdateItem extends Component {
     this.setState({ [name]: val });
   };
 
+  updateItem = async (e, updateItemMutation) => {
+    e.preventDefault();
+
+    const { id } = this.props;
+
+    const res = await updateItemMutation({
+      variables: {
+        id,
+        ...this.state,
+      },
+    });
+  };
+
   render() {
-    const { title, price, description, image } = this.state;
     const { id } = this.props;
 
     return (
       <Query query={SINGLE_ITEM_QUERY} variables={{ id }}>
-        {({ data, loading }) => {
-          if (loading) return <p>Loading...</p>;
+        {({ data, queryLoading }) => {
+          if (queryLoading) return <p>Loading...</p>;
+          if (!data.item) return <p>No item found for {id}</p>;
 
           return (
             <Mutation mutation={UPDATE_ITEM_MUTATION} variables={this.state}>
-              {(createItem, { error }) => (
-                <Form
-                  onSubmit={async e => {
-                    // stop the form from submitting
-                    e.preventDefault();
-
-                    // TODO: check that the image upload is completed before submitting
-
-                    // call the mutation
-                    const res = await createItem(this.state);
-
-                    // redirect to single item page
-                    console.log(res);
-
-                    Router.push({
-                      pathname: '/item',
-                      query: { id: res.data.createItem.id },
-                    });
-                  }}
-                >
+              {(updateItemMutation, { loading, error }) => (
+                <Form onSubmit={e => this.updateItem(e, updateItemMutation)}>
                   <Error error={error} />
                   <fieldset disabled={loading} aria-busy={loading}>
                     <label htmlFor="title">
@@ -119,7 +116,9 @@ class UpdateItem extends Component {
                       />
                     </label>
 
-                    <button type="submit">Submit</button>
+                    <button type="submit">
+                      Sav{loading ? 'ing' : 'e'} changes
+                    </button>
                   </fieldset>
                 </Form>
               )}

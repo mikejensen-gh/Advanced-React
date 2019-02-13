@@ -1,3 +1,5 @@
 import Home from './index';
 
-export default Home;
+const Items = () => <Home />;
+
+export default Items;

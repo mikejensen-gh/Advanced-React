@@ -1,5 +1,6 @@
-# imports are not native to graphql, but prisma has added import functionality. imports are written in comments below, and let us access everything from prisma.graphql, so we don't have to rewrite stuff 1:1 (e.g. for returning the Item type below)
 # import * from './generated/prisma.graphql'
+
+# imports are not native to graphql, but prisma has added import functionality. imports are written in comments, and let us access everything from prisma.graphql, so we don't have to rewrite stuff 1:1 (e.g. for returning the Item type below)
 
 type Mutation {
   createItem(title: String, description: String, price: Int, image: String, largeImage: String): Item!
@@ -9,10 +10,14 @@ type Mutation {
 
   # TODO: return new custom type of e.g. 'SuccessMessage'
   deleteItem(id: ID!): Item
+
+  signup(email: String!, password: String!, name: String!): User!
 }
 
 type Query {
   items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item]!
   item(where: ItemWhereUniqueInput!): Item
   itemsConnection(where: ItemWhereInput): ItemConnection!
+
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, first: Int): [User]!
 }

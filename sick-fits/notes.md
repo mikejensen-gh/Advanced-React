@@ -33,6 +33,9 @@ https://www.styled-components.com/docs/advanced/#nextjs
 http://ricostacruz.com/nprogress/
 
 # backend
+## updating the datamodel
+- need to redeploy after every update
+
 ## adding a backend function
 - first add to schema.graphql
 - then add to mutation/query

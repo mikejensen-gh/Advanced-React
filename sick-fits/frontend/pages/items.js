@@ -1,5 +1,3 @@
-import Home from './index';
-
-const Items = () => <Home />;
+import Items from './index';
 
 export default Items;

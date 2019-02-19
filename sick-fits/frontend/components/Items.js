@@ -32,6 +32,7 @@ const ItemsList = styled.div`
   margin: 0 auto;
 `;
 
+// TODO: work how to partially invalidate the Apollo cache when an item is updated/added/deleted to prevent out of date cache
 class Items extends Component {
   render() {
     const {

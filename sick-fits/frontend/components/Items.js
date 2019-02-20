@@ -33,6 +33,8 @@ const ItemsList = styled.div`
 `;
 
 // TODO: work how to partially invalidate the Apollo cache when an item is updated/added/deleted to prevent out of date cache
+
+// TODO: work out what is up with the error "Warning: Text content did not match. Server: ... Client ..."
 class Items extends Component {
   render() {
     const {

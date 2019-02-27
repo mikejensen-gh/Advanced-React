@@ -113,7 +113,7 @@ const mutations = {
       throw new Error('Invalid password');
     }
 
-    const token = jwt.sign({ userID: user.id }, process.env.APP_SECRET);
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
 
     ctx.response.cookie('token', token, {
       httpOnly: true,

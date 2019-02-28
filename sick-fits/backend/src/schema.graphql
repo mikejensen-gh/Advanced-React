@@ -7,17 +7,15 @@ type SuccessMessage {
 }
 
 type Mutation {
-  createItem(title: String, description: String, price: Int, image: String, largeImage: String): Item!
-
   # TODO: how to update images for items
-  updateItem(id: ID!, title: String, description: String, price: Int): Item!
-
-  # TODO: return new custom type of e.g. 'SuccessMessage'
+  createItem(title: String, description: String, price: Int, image: String, largeImage: String): Item!
   deleteItem(id: ID!): Item
-
-  signup(email: String!, password: String!, name: String!): User!
+  resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
+  requestReset(email: String!): SuccessMessage
   signin(email: String!, password: String!): User!
   signout: SuccessMessage
+  signup(email: String!, password: String!, name: String!): User!
+  updateItem(id: ID!, title: String, description: String, price: Int): Item!
 }
 
 type Query {
@@ -27,4 +25,11 @@ type Query {
   me: User
 
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, first: Int): [User]!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  permissions: [Permission!]!
 }

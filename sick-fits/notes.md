@@ -33,6 +33,9 @@ https://www.styled-components.com/docs/advanced/#nextjs
 http://ricostacruz.com/nprogress/
 
 # backend
+https://www.apollographql.com/
+https://github.com/prisma/graphql-yoga/
+
 ## updating the datamodel
 - need to redeploy after every update
 

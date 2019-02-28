@@ -122,6 +122,13 @@ const mutations = {
 
     return user;
   },
+
+  signout(parent, args, ctx, info) {
+    ctx.response.cookies = null;
+    ctx.response.userId = null;
+
+    return true;
+  },
 };
 
 module.exports = mutations;

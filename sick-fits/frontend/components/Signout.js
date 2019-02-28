@@ -1,37 +1,35 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-import Error from './ErrorMessage';
 import { CURRENT_USER_QUERY } from './User';
 import SickButton from './styles/SickButton';
 
 const SIGNOUT_MUTATION = gql`
   mutation SIGNOUT_MUTATION {
-    signout
+    signout {
+      message
+    }
   }
 `;
 
-class Signout extends Component {
-  render() {
-    return (
-      <Mutation
-        mutation={SIGNOUT_MUTATION}
-        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+const Signout = props => (
+  <Mutation
+    mutation={SIGNOUT_MUTATION}
+    refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+  >
+    {signout => (
+      <button
+        onClick={async e => {
+          e.preventDefault();
+          const res = await signout();
+          console.log(res);
+        }}
+        type="button"
       >
-        {(signout, { error, loading }) => (
-          <SickButton
-            onClick={async e => {
-              e.preventDefault();
-              const res = await signout();
-              console.log(res);
-            }}
-          >
-            Sign out
-          </SickButton>
-        )}
-      </Mutation>
-    );
-  }
-}
+        Sign out
+      </button>
+    )}
+  </Mutation>
+);
 
 export default Signout;

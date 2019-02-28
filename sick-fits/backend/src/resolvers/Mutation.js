@@ -124,10 +124,9 @@ const mutations = {
   },
 
   signout(parent, args, ctx, info) {
-    ctx.response.cookies = null;
-    ctx.response.userId = null;
+    ctx.response.clearCookie('token');
 
-    return true;
+    return { message: 'Successfully signed out' };
   },
 };
 

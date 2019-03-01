@@ -8,11 +8,21 @@ const oneYear = 1000 * 60 * 60 * 24 * 365;
 
 const mutations = {
   async createItem(parent, args, ctx, info) {
-    // TODO: check if logged in
+    if (!ctx.request.userId) {
+      throw new Error('You must be logged in to create a new item');
+    }
 
     const item = await ctx.db.mutation.createItem(
       {
-        data: { ...args },
+        data: {
+          // this is how relationships are create between item and user in prisma
+          user: {
+            connect: {
+              id: ctx.request.userId,
+            },
+          },
+          ...args,
+        },
       },
       info
     );

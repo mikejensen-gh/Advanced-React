@@ -30,7 +30,7 @@ const Pagination = ({ page }) => (
     }) => {
       if (loading) return <p>Loading...</p>;
 
-      const pages = Math.ceil(count / perPage);
+      const pages = Math.max(Math.ceil(count / perPage), 1);
 
       return (
         <PaginationStyles>

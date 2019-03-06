@@ -19,12 +19,11 @@ type Mutation {
 }
 
 type Query {
-  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item]!
   item(where: ItemWhereUniqueInput!): Item
+  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item]!
   itemsConnection(where: ItemWhereInput): ItemConnection!
   me: User
-
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, first: Int): [User]!
+  users: [User]!
 }
 
 type User {

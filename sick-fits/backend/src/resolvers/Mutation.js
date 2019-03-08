@@ -322,6 +322,72 @@ const mutations = {
       info
     );
   },
+
+  // my version
+  // async removeFromCart(parent, args, ctx, info) {
+  //   // 0. Make sure user is signed in
+  //   const { userId } = ctx.request;
+
+  //   if (!userId) {
+  //     throw new Error('You must be signed in!');
+  //   }
+
+  //   // 1. find cart item
+  //   const [existingCartItem] = await ctx.db.query.cartItems(
+  //     {
+  //       where: {
+  //         user: { id: userId },
+  //         item: { id: args.id },
+  //       },
+  //     },
+  //     info
+  //   );
+
+  //   // 2. make sure the user owns the cart item
+  //   if (!existingCartItem) {
+  //     throw new Error('Cart item not found, or you do not own this cart item!');
+  //   }
+
+  //   // 3. delete cart item
+  //   return ctx.db.mutation.deleteCartItem({
+  //     where: {
+  //       id: existingCartItem.id,
+  //     },
+  //   });
+  // },
+
+  // wes' version
+  async removeFromCart(parent, args, ctx, info) {
+    // 1. find cart item
+    const cartItem = await ctx.db.query.cartItem(
+      {
+        where: {
+          id: args.id,
+        },
+      },
+      `{id, user { id }}`
+    );
+
+    // 1.5 make sure we found an item
+    if (!cartItem) {
+      throw new Error('No item found');
+    }
+
+    // 2. make sure the user owns the cart item
+    if (cartItem.user.id !== ctx.request.userId) {
+      throw new Error('Cheatin huhhhh');
+    }
+
+    // 3. delete cart item
+    return ctx.db.mutation.deleteCartItem(
+      {
+        where: {
+          id: cartItem.id,
+        },
+      },
+      info
+    );
+  },
 };
 
 module.exports = mutations;

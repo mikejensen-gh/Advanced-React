@@ -17,7 +17,6 @@ class DeleteItem extends Component {
     // manually update apollo cache on client to match server
     // 1. read cache with graphql for items we want
     const data = cache.readQuery({ query: ALL_ITEMS_QUERY });
-    console.log(data, payload);
 
     // 2. filter deleted item out of the page
     data.items = data.items.filter(

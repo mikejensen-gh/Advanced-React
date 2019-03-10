@@ -82,8 +82,6 @@ class CreateItem extends Component {
               const res = await createItem(this.state);
 
               // redirect to single item page
-              console.log(res);
-
               Router.push({
                 pathname: '/item',
                 query: { id: res.data.createItem.id },

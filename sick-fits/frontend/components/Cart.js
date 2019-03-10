@@ -38,7 +38,6 @@ const Cart = () => (
   <Composed>
     {({ user, toggleCart, localState }) => {
       const { me } = user.data;
-      console.log(me);
 
       if (!me) {
         return null;

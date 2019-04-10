@@ -29,6 +29,7 @@ function totalItems(cart) {
 
 class TakeMyMoney extends React.Component {
   onToken = async (res, createOrder) => {
+    NProgress.start();
     console.log('onToken called', res);
 
     // manually call mutation
@@ -41,7 +42,10 @@ class TakeMyMoney extends React.Component {
       alert(err.message);
     });
 
-    console.log(order);
+    Router.push({
+      pathname: '/order',
+      query: { id: order.data.createOrder.id },
+    });
   };
 
   render() {

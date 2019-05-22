@@ -1,11 +1,17 @@
 export default function(amount) {
   const options = {
     style: 'currency',
-    currency: 'EUR',
+    currency: 'USD',
     minimumFractionDigits: 2,
   };
-  // if its a whole, dollar amount, leave off the .00
-  if (amount % 100 === 0) options.minimumFractionDigits = 0;
-  const formatter = new Intl.NumberFormat('de-DE', options);
+
+  // if its a whole amount, leave off the .00
+  if (amount % 100 === 0) {
+    options.minimumFractionDigits = 0;
+  }
+
+  const formatter = new Intl.NumberFormat('en-US', options);
   return formatter.format(amount / 100);
 }
+
+// TODO - go back to using EUR + de-DE and solve server/client rendering mismatch, jest issues

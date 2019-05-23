@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme';
+import toJSON from 'enzyme-to-json';
 import ItemComponent from '../components/Item';
 
 const fakeItem = {
@@ -11,39 +12,44 @@ const fakeItem = {
 };
 
 describe('<Item/>', () => {
-  it('renders the image properly', () => {
+  it('renders and matches the snapshot', () => {
     const wrapper = shallow(<ItemComponent item={fakeItem} />);
-    const img = wrapper.find('img');
 
-    expect(img.props().src).toBe(fakeItem.image);
-    expect(img.props().alt).toBe(fakeItem.title);
+    expect(toJSON(wrapper)).toMatchSnapshot();
   });
+  // it('renders the image properly', () => {
+  //   const wrapper = shallow(<ItemComponent item={fakeItem} />);
+  //   const img = wrapper.find('img');
 
-  it('renders the pricetag and title properly', () => {
-    const wrapper = shallow(<ItemComponent item={fakeItem} />);
-    const PriceTag = wrapper.find('PriceTag');
+  //   expect(img.props().src).toBe(fakeItem.image);
+  //   expect(img.props().alt).toBe(fakeItem.title);
+  // });
 
-    // console.log(wrapper.debug());
+  // it('renders the pricetag and title properly', () => {
+  //   const wrapper = shallow(<ItemComponent item={fakeItem} />);
+  //   const PriceTag = wrapper.find('PriceTag');
 
-    // these tests are equivalent. dive() shallow renders the component one level deeper
-    expect(PriceTag.dive().text()).toBe('$50');
-    expect(PriceTag.children().text()).toBe('$50');
+  //   // console.log(wrapper.debug());
 
-    expect(wrapper.find('Title a').text()).toBe(fakeItem.title);
-  });
+  //   // these tests are equivalent. dive() shallow renders the component one level deeper
+  //   expect(PriceTag.dive().text()).toBe('$50');
+  //   expect(PriceTag.children().text()).toBe('$50');
 
-  it('renders the buttons properly', () => {
-    const wrapper = shallow(<ItemComponent item={fakeItem} />);
-    const buttonList = wrapper.find('.buttonList');
+  //   expect(wrapper.find('Title a').text()).toBe(fakeItem.title);
+  // });
 
-    expect(buttonList.children()).toHaveLength(3);
+  // it('renders the buttons properly', () => {
+  //   const wrapper = shallow(<ItemComponent item={fakeItem} />);
+  //   const buttonList = wrapper.find('.buttonList');
 
-    // these should all be functionally equivalent
-    expect(buttonList.find('Link')).toHaveLength(1);
-    expect(buttonList.find('Link').exists()).toBe(true);
-    expect(buttonList.find('Link')).toBeTruthy();
+  //   expect(buttonList.children()).toHaveLength(3);
 
-    expect(buttonList.find('AddToCart')).toBeTruthy();
-    expect(buttonList.find('DeleteItem')).toBeTruthy();
-  });
+  //   // these should all be functionally equivalent
+  //   expect(buttonList.find('Link')).toHaveLength(1);
+  //   expect(buttonList.find('Link').exists()).toBe(true);
+  //   expect(buttonList.find('Link')).toBeTruthy();
+
+  //   expect(buttonList.find('AddToCart')).toBeTruthy();
+  //   expect(buttonList.find('DeleteItem')).toBeTruthy();
+  // });
 });

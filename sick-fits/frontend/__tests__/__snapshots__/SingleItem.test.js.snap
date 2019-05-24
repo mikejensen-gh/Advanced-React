@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SingleItem/> renders with proper data 1`] = `null`;
+
+exports[`<SingleItem/> renders with proper data 2`] = `
+<img
+  alt="dogs are best"
+  src="dog.jpg"
+/>
+`;
+
+exports[`<SingleItem/> renders with proper data 3`] = `
+<p>
+  dogs
+</p>
+`;

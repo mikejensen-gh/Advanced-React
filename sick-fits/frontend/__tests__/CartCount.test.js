@@ -15,11 +15,12 @@ describe('<CartCount/>', () => {
 
   it('updates via props', () => {
     const wrapper = shallow(<CartCount count={50} />);
+    // const wrapper = mount(<CartCount count={50} />);
 
+    // mounting actually creates the element in an HTML environemnt
     expect(toJSON(wrapper)).toMatchSnapshot();
 
     wrapper.setProps({ count: 10 });
-
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });
